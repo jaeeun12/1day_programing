@@ -1,7 +1,7 @@
 #define TRIG 2
 #define ECHO 3
 
-#define FILTERSIZE (10)
+#define FILTERSIZE 10
 float ar[FILTERSIZE+1] = {0,};
 float pre_avg;
 float new_value;
