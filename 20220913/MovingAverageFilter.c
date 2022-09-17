@@ -2,7 +2,7 @@
 
 #define FILTERSIZE 10
 
-int array[FILTERSIZE] = {0,};
+float array[FILTERSIZE] = {0,};
 
 float mov_filter(float pre_avg, float new_value);
 
@@ -30,14 +30,19 @@ float mov_filter (float pre_avg, float new_value)
 	
 	array[FILTERSIZE] = new_value;
 	
-	average = pre_avg + array[FILTERSIZE]/4 - array[FILTERSIZE-4]/4;
+	average = pre_avg + array[FILTERSIZE]/FILTERSIZE - array[0]/FILTERSIZE;
 	
 	for(int i = 1 ; i < FILTERSIZE+1 ; i++)
 	{
 		array[i-1] = array[i];
 	}
+	
 	array[FILTERSIZE] = 0;
 	
+	for(int j = 0 ; j < FILTERSIZE ; j++)
+	{
+		printf("%f ", array[j]);
+	}
 	return average;
 }
 
